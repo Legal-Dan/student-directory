@@ -1,6 +1,8 @@
 #Basic header
-puts "The students of Villains Academy"
-puts "---------------"
+def print_header
+  puts "The students of Villains Academy"
+  puts "---------------"
+end
 
 #List of students
 students = [
@@ -18,9 +20,17 @@ students = [
 ]
 
 #Print out student names
-students.each do |student|
-  puts student
+def print(names)
+  names.each do |student|
+    puts student
+  end
 end
 
 #Student count
-print "Overall, we have #{students.count} great students"
+def print_footer(names)
+  puts "Overall, we have #{names.count} great students"
+end
+
+print_header
+print(students)
+print_footer(students)
