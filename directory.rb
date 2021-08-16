@@ -1,5 +1,7 @@
+#Basic header
 puts "The students of Villains Academy"
 puts "---------------"
+#List of students
 puts "Dr. Hannibal Lecter"
 puts "Darth Vader"
 puts "Nurse Ratched"
@@ -11,6 +13,7 @@ puts "Freddy Krueger"
 puts "The Joker"
 puts "Joffrey Baratheon"
 puts "Norman Bates"
+#Student count
 print "Overall, we have "
 print 11
 puts " great students"
