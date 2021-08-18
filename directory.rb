@@ -1,26 +1,37 @@
 #Interactive menu
-def interactive_menu
-  students = []
-  loop do
-    puts "1. Input the students"
-    puts "2. Show the students"
-    puts "9. Exit"
-    selection = gets.chomp
-    case selection
-    when "1"
-      students = input_students
-    when "2"
-      print_header
-      print(students)
-      print_footer(students)
-    when "9"
-      exit
-    else
-      puts "Invalid selection"
-    end
+def print_menu
+  puts "1. Input the students"
+  puts "2. Show the students"
+  puts "9. Exit"
+end
+
+def show_students
+  print_header
+  print_students_list(@students)
+  print_footer(@students)
+end
+
+def process(selection)
+  case selection
+  when "1"
+    input_students
+  when "2"
+    show_students
+  when "9"
+    exit
+  else
+    puts "Invalid selection"
   end
 end
 
+def interactive_menu
+  @students = []
+  loop do
+    print_menu
+    selection = gets.chomp
+    process(selection)
+  end
+end
 
 #Basic header
 def print_header
@@ -33,17 +44,16 @@ def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
   name = gets.chomp
-  studentstemp = []
+  @students = []
   while !name.empty? do
-    studentstemp << {name: name, cohort: :november}
-    puts "now we have #{studentstemp.count} students"
+    @students << {name: name, cohort: :november}
+    puts "now we have #{@students.count} students"
     name = gets.chomp
   end
-  studentstemp
 end
 
 #Print out student names
-def print(names)
+def print_students_list(names)
   names.each do |student|
     puts "#{student[:name]} (#{student[:cohort]} cohort)"
   end
