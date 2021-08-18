@@ -1,3 +1,27 @@
+#Interactive menu
+def interactive_menu
+  students = []
+  loop do
+    puts "1. Input the students"
+    puts "2. Show the students"
+    puts "9. Exit"
+    selection = gets.chomp
+    case selection
+    when "1"
+      students = input_students
+    when "2"
+      print_header
+      print(students)
+      print_footer(students)
+    when "9"
+      exit
+    else
+      puts "Invalid selection"
+    end
+  end
+end
+
+
 #Basic header
 def print_header
   puts "The students of Villains Academy"
@@ -6,16 +30,16 @@ end
 
 #List of students
 def input_students
-  students = []
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
   name = gets.chomp
+  studentstemp = []
   while !name.empty? do
-    students << {name: name, cohort: :november}
-    puts "now we have #{students.count} students"
+    studentstemp << {name: name, cohort: :november}
+    puts "now we have #{studentstemp.count} students"
     name = gets.chomp
   end
-  students
+  studentstemp
 end
 
 #Print out student names
@@ -30,7 +54,4 @@ def print_footer(names)
   puts "Overall, we have #{names.count} great students"
 end
 
-students = input_students
-print_header
-print(students)
-print_footer(students)
+interactive_menu
